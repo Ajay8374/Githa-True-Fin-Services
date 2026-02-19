@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launching Soon - Githa True Fin Services</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    :root {
+      --bg-dark: #03142a;
+      --bg-darker: #020c19;
+      --accent-red: #e53935;
+      --accent-orange: #ffb300;
+      --text-main: #ffffff;
+      --text-muted: #cfd8e3;
+      --card-bg: #0d2038;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --radius-lg: 18px;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #102d5c, var(--bg-dark));
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(229, 57, 53, 0.1), transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 179, 0, 0.1), transparent 50%);
+      pointer-events: none;
+    }
+
+    .countdown-container {
+      text-align: center;
+      z-index: 1;
+      padding: 40px;
+    }
+
+    .logo-section {
+      margin-bottom: 40px;
+    }
+
+    .logo-section h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-section p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .launching-text {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .timer-display {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .time-unit {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 30px 40px;
+      min-width: 140px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .time-unit:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .time-value {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .time-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      height: 6px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
+      border-radius: 10px;
+      transition: width 1s linear;
+      box-shadow: 0 0 10px rgba(229, 57, 53, 0.5);
+    }
+
+    .status-message {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .logo-section h1 {
+        font-size: 2rem;
+      }
+
+      .time-unit {
+        padding: 20px 30px;
+        min-width: 100px;
+      }
+
+      .time-value {
+        font-size: 3rem;
+      }
+
+      .timer-display {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown-container">
+    <div class="logo-section">
+      <h1>Githa True Fin Services</h1>
+      <p>Professional Loan Recovery Solutions</p>
+    </div>
+
+    <div class="launching-text">Launching In</div>
+
+    <div class="timer-display">
+      <div class="time-unit">
+        <div class="time-value" id="hours">00</div>
+        <div class="time-label">Hours</div>
+      </div>
+      <div class="time-unit">
+        <div class="time-value" id="minutes">00</div>
+        <div class="time-label">Minutes</div>
+      </div>
+      <div class="time-unit">
+        <div class="time-value" id="seconds">00</div>
+        <div class="time-label">Seconds</div>
+      </div>
+    </div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="status-message" id="statusMessage">Stay Tuned</div>
+  </div>
+
+  <script>
+    // Set your target date and time here
+    // Format: 'YYYY-MM-DD HH:MM:SS' (24-hour format)
+    // Example: '2026-02-20 18:00:00' for Feb 20, 2026 at 6:00 PM
+    const targetDateTime = '2026-02-19 18:30:00'; // Change this to your desired launch time
+
+    // Parse the target date
+    const targetDate = new Date(targetDateTime).getTime();
+    const initialTime = targetDate - new Date().getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        // Countdown finished - redirect to index.html
+        document.getElementById('statusMessage').textContent = 'Launching now...';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 500);
+        return;
+      }
+
+      // Calculate time units
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Update display with leading zeros
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+      // Update progress bar
+      const progress = ((initialTime - distance) / initialTime) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+
+      // Update status message
+      if (hours === 0 && minutes === 0 && seconds <= 10) {
+        document.getElementById('statusMessage').textContent = 'Get ready...';
+      } else if (hours === 0 && minutes < 5) {
+        document.getElementById('statusMessage').textContent = 'Almost there...';
+      } else {
+        document.getElementById('statusMessage').textContent = 'Preparing your experience...';
+      }
+    }
+
+    // Update countdown every second
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>

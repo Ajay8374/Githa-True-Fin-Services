@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact | Githa True Fin Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="countdown-check.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <div class="nav-left">
+        <img src="logo.png" alt="Githa logo" class="logo" />
+        <div>
+          <div class="brand-title">GITHA TRUE FIN SERVICES</div>
+          <div class="nav-subtitle">Loan Recovery & Collections Partner</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="teams.html">Teams</a>
+        <a href="process.html">Process</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Contact Us</h1>
+    <p>Connect with us to discuss your portfolio and recovery requirements.</p>
+  </div>
+
+  <section>
+    <div class="contact-card card">
+  <div class="contact-details">
+
+    <!-- Company Name -->
+    <p class="company-name-highlight">
+      GITHA TRUE FIN SERVICES
+    </p>
+
+    <!-- Address -->
+    <p>
+      8-3-214/22, Srinivas Nagar Colony (West),<br />
+      SR Nagar, Hyderabad – 500038
+    </p>
+
+    <!-- Phone -->
+    <p class="phone-highlight">
+      📞 <a href="tel:9493844091">9493844091</a>
+    </p>
+
+    <!-- Email -->
+    <p class="email-highlight">
+      ✉️ <a href="mailto:githatruefinservices@mail.com">
+        githatruefinservices@gmail.com
+      </a>
+    </p>
+
+    <!-- Clients -->
+    <p>Clients: <span>Banks & NBFCs</span></p>
+
+    <p style="margin-top:12px; font-size:0.9rem; color:var(--text-muted);">
+      We typically respond to portfolio enquiries within one working day.
+    </p>
+
+  </div>
+</div>
+
+
+      <!-- Static contact form (hook it to backend / mail service later) -->
+      <form
+  class="contact-form"
+  action="https://formsubmit.co/info@githatruefinservices.com"
+  method="POST"
+>
+  <!-- FormSubmit settings -->
+  <input type="hidden" name="_subject" value="New enquiry from Githa True Fin Services website" />
+  <input type="hidden" name="_template" value="box" />
+  <input type="hidden" name="_captcha" value="false" />
+
+  <label for="name">Name</label>
+  <input id="name" name="name" type="text" placeholder="Your name" required />
+
+  <label for="org">Organisation</label>
+  <input id="org" name="organisation" type="text" placeholder="Bank / NBFC / Other" required />
+
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+  <label for="message">Message</label>
+  <textarea
+    id="message"
+    name="message"
+    placeholder="Share your requirement or portfolio details"
+    required
+  ></textarea>
+
+  <button type="submit" class="btn btn-primary" style="width:100%; margin-top:4px;">
+    Send Enquiry
+  </button>
+</form>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Githa True Fin Services. All rights reserved.</div>
+      <div>Hyderabad, Telangana, India.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<a
+  href="https://wa.me/919493844091?text=Hello%20Githa%20True%20Fin%20Services,%20I%20have%20a%20loan%20recovery%20enquiry."
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat on WhatsApp"
+>
+  <img src="whatsapp.png" alt="WhatsApp" style="width:32px;height:32px;" />
+</a>
+
+</body>
+</html>
