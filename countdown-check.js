@@ -1,7 +1,7 @@
 // Countdown timer check - redirects to countdown page if timer hasn't finished
 (function() {
   // Set the same target date/time as in countdown.html
-  const targetDateTime = '2026-02-20 14:40:00';
+  const targetDateTime = '2026-02-20 15:40:00';
   
   // Don't redirect if we're already on the countdown page
   if (window.location.pathname.endsWith('countdown.html')) {
